@@ -1,0 +1,26 @@
+from time import sleep
+import sys
+def print_lyrics():
+    lines = [
+        ("sigma,sigma", 0.5),
+        ("boy, sigma boy", 0.5),
+        ("sigma boy", 0.5),
+        ("Kazhdaya devchonka", 0.5),
+        ("khochet tantsevat' s toboy", 0.5) ] 
+             #sigma  boy
+    delays = [.50,  0.40, .50, .50, .50]
+
+    for i, (line, char_delay) in enumerate(lines):
+        words = line.split(" ")
+        for word in words:
+
+            if "sigma, " in word.lower():
+                print("\033[35m" + word + "\033[40ms", end=' ')
+        
+            else:
+                print(word, end=' ')
+            sys.stdout.flush()
+            sleep(char_delay)
+        sleep(delays[i])
+        print('')
+print_lyrics()
