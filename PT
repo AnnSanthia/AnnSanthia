@@ -1,0 +1,40 @@
+from time import sleep
+import sys
+def print_lyrics():
+
+    lines = [
+        ("labis na naiinip", 0.10),
+        ("nayayamot,", 0.25),
+        ("sa bawat", 0.15),
+        ("saglit", 0.1),
+        ("kapag na aalala ka", 0.17),
+        ("wala naman", 0.15),
+        ("akong magawa", 0.17),
+        ("umuwi kana baby", 0.25),
+        ("di na ako", 0.27),
+        ("sanay ng wala ka", 0.27),
+        ("mahirap ang mag-isa", 0.35),
+        ("at sa gabi hinahanap-hanap", 0.29),
+
+        ("kita", 0.15),
+        
+    ] 
+             #labis nayayamot   sa bwat     saglit    aalala   wala nman   akogawa   umuwi    di na ako   sanay   mahirap   at sa gabi  kita
+    delays = [3.20, 2.10,        .80,        5.00,    3.20,    2.00,      5.00,     2.85,    .60,      1.70,    3.85,     3.50,     2.00]
+
+    for i, (line, char_delay) in enumerate(lines):
+        words = line.split(" ")
+        for word in words:
+            if "nayayamot" in word.lower():
+                print("\033[31m" + word + "\033[0ms", end=' ')
+            elif "labis" in word.lower():
+                print("\033[35m" + word + "\033[0m", end=' ')
+
+
+            else:
+                print(word, end=' ')
+            sys.stdout.flush()
+            sleep(char_delay)
+        sleep(delays[i])
+        print('')
+print_lyrics()
